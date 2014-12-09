@@ -1,0 +1,57 @@
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">B-Sky-B</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="container">
+    <h2 class="text-center">Performance Test</h2>
+    <div>
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="preSet" class="col-sm-3">Pre Set:</label>
+                <div class="col-sm-4">
+                    <select id="preSet" class="form-control"
+                            ng-model="preSetOption"
+                            ng-options="preSetOption.name for preSetOption in preSetOptions">
+
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="test" class="col-sm-3">Test:</label>
+                <div class="col-sm-4">
+                    <select id="test" class="form-control"
+                            ng-model="testOption"
+                            ng-options="testOption.name for testOption in testOptions">
+                    </select>
+                </div>
+            </div>
+            <div class="checkbox">
+                <div class="col-sm-3"></div>
+                <label class="col-sm-4">
+                    <input type="checkbox" value="">
+                    Save test configuration
+                </label>
+            </div>
+        </form> <!-- / top page form -->
+    </div> <!-- / form wrap -->
+</div> <!-- /.container -->

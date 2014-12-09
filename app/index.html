@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html ng-app="App">
+<head lang="en">
+    <meta charset="UTF-8">
+    <!-- ======= CSS ====== -->
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="styles/default.css" rel="stylesheet">
+    <link href="styles/slider.css" rel="stylesheet">
+    <title>B-Sky-B</title>
+</head>
+<body>
+<div class="wrap">
+    <div class="container" ng-controller="PresetCtrl">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">B-Sky-B</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Link</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container">
+            <h2 class="text-center">Performance Test</h2>
+            <div>
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="preSet" class="col-sm-3">Pre Set:</label>
+                        <div class="col-sm-4"> <!--ng-change="defineTests(preSetOption.name)" -->
+                            <select id="preSet" class="form-control"
+                                    ng-model="preSetOption"
+                                    ng-options="preSetOption for preSetOption in preSetOptions"
+                                    ng-change="promiseTest(preSetOption)">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="test" class="col-sm-3">Test:</label>
+                        <div class="col-sm-4">
+                            <select id="test" class="form-control"
+                                    ng-model="testOption"
+                                    ng-disabled="preSetOption == preSetOptions[0]"
+                                    ng-options="testOption for testOption in testOptions"
+                                    ng-change="changeTestState(testOption)"
+                                    ng-class="{loading: !testsLoaded}">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="checkbox">
+                        <div class="col-sm-3"></div>
+                        <label class="col-sm-4">
+                            <input type="checkbox"
+                                   value=""
+                                   ng-model="saveTestMarker">
+                            Save test configuration
+                        </label>
+                    </div>
+                </form> <!-- / top page form -->
+            </div> <!-- / form wrap -->
+        </div> <!-- /.container -->
+        <!-- ======= Sections for Performance Test ======= -->
+        <div ui-view="test"></div>
+        <div ui-view="progressBar"></div>
+        <!-- for test needs-->
+        <div ng-controller="QtTestCtrl">
+            <a href="" ui-sref="testOptions.testResult">Result page</a>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- =================== JS ===================== -->
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="app.js"></script>
+    <script src="scripts/controllers/tests/QtTestCtrl.js"></script>
+    <script src="scripts/controllers/PresetCtrl.js"></script>
+    <script src="scripts/services/PresetService.js"></script>
+    <script src="../bower_components/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js"></script>
+    <script src="scripts/directives/sliderDirective.js"></script>
+
+</body>
+</html>

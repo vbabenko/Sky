@@ -1,0 +1,127 @@
+<div class="container overlay-relative">
+    <div ng-class="{overlay: testActive}"></div>
+    <h2 class="text-center margin-space">QT Test</h2>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="records" class="col-sm-3">Records:</label>
+            <div class="col-sm-4 margin-space checkbox-aligment">
+                <span id="records" slider
+                      ng-model="qtTestData.sliders.recordsValue"
+                      max="{{qtTestData.sliders.testOptions.max}}"
+                      ng-change="getSelectedData(qtTestDataBuffer,'recordsValue', qtTestData.sliders.recordsValue)">
+                </span> {{qtTestData.sliders.recordsValue}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="transcoder" class="col-sm-3">Transcoder:</label>
+            <div class="col-sm-4 margin-space checkbox-aligment">
+                <span id="transcoder" slider
+                      ng-model="qtTestData.sliders.transcoderValue"
+                      max="{{qtTestData.sliders.testOptions.max}}"
+                      ng-change="getSelectedData(qtTestDataBuffer,'transcoderValue', qtTestData.sliders.transcoderValue)">
+                </span> {{qtTestData.sliders.transcoderValue}}
+            </div>
+        </div>
+        <!-- Button trigger modal -->
+        <div class="form-group">
+            <label for="transcoder" class="col-sm-3">Video Player Configuration:</label>
+            <button type="button" class="btn btn-primary btn-group-sm col-sm-1 button-aligment" data-toggle="modal" data-target="#myModal">
+                ...
+            </button>
+        </div>
+        <!--- ===== Modal window =====---->
+        <div class="modal top-layer fade" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">Video Player Configuration</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Custom trigers&hellip;</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <div class="form-group">
+            <label for="mainVideo" class="col-sm-3">Main Video Source:</label>
+            <div class="col-sm-4">
+                <select id="mainVideo" class="form-control"
+                        ng-model="qtTestData.mainVideo"
+                        ng-options="mainVideo for mainVideo in mainVideoSources"
+                        ng-change="getSelectedData(qtTestDataBuffer,'mainVideo', qtTestData.mainVideo)">
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="pipVideo" class="col-sm-3">Pip Video Source:</label>
+            <div class="col-sm-4">
+                <select id="pipVideo" class="form-control"
+                        ng-model="qtTestData.pipVideo"
+                        ng-options="pipVideo for pipVideo in pipVideoSources"
+                        ng-change="getSelectedData(qtTestDataBuffer, 'pipVideo', qtTestData.pipVideo)">
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="fps" class="col-sm-3">FPS of secondary EL Stream:</label>
+            <div class="col-sm-4">
+                <select id="fps" class="form-control"
+                        ng-model="qtTestData.fps"
+                        ng-options="fps for fps in fpsValues"
+                        ng-change="getSelectedData(qtTestDataBuffer, 'fps', qtTestData.fps)">
+                </select>
+            </div>
+        </div>
+        <div class="checkbox label-aligment margin-space">
+            <label class="col-sm-3">Enable DRM:</label>
+            <input type="checkbox"
+                        class="checkbox-aligment"
+                        ng-model="qtTestData.drm"
+                        ng-change="getSelectedData(qtTestDataBuffer, 'drm', qtTestData.drm)">
+        </div>
+        <div class="checkbox label-aligment margin-space">
+            <label class="col-sm-3">720p Display:</label>
+            <input type="checkbox"
+                        class="checkbox-aligment"
+                        ng-model="qtTestData.display720"
+                        ng-change="getSelectedData(qtTestDataBuffer, 'display720', qtTestData.display720)">
+        </div>
+        <div class="checkbox label-aligment margin-space">
+            <label class="col-sm-3">DVB Descrambling:</label>
+            <input type="checkbox"
+                        class="checkbox-aligment"
+                        ng-model="qtTestData.dvbDesc"
+                        ng-change="getSelectedData(qtTestDataBuffer, 'dvbDesc', qtTestData.dvbDesc)">
+        </div>
+        <div class="form-group label-aligment">
+            <label for="recordings" class="col-sm-3 button-aligment">Length of Recording:</label>
+            <div class="col-sm-4 margin-space" id="recordings-wrap">
+                <span id="recordings" slider
+                      ng-model="qtTestData.sliders.recordingsValue"
+                      max="{{qtTestData.sliders.testOptions.max}}"
+                      ng-change="getSelectedData(qtTestDataBuffer, 'recordingsValue', qtTestData.sliders.recordingsValue)">
+                </span> {{qtTestData.sliders.recordingsValue}}
+            </div>
+        </div>
+    </form> <!-- /.form-horizontal -->
+</div> <!-- /.container for the test -->
+<div>
+    <div class="form-group">
+        <div class="red-text col-sm-4" ng-show="isValidForm">
+            <small class="red-text">
+                Select all required fields
+            </small>
+        </div>
+    </div>
+    <div class="text-center">
+        <button type="button" class="btn btn-primary"
+                ng-click="testProgress(); saveTestConfiguration(qtTestDataBuffer, testOption.name)"
+                ng-disabled="testActivated">Start test</button>
+        <button type="button" class="btn btn-default" ng-click="showObj(qtTestDataBuffer); activateTestConfig(testOption.name)">Stop test</button>
+    </div>
+</div>

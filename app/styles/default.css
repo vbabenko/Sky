@@ -1,0 +1,76 @@
+body {
+    font-family: "Courier New", Courier, monospace;
+    padding-bottom: 40px;
+}
+
+.empty-section {
+    background: #fff url('../assets/img/briefcase.png') no-repeat center;
+    height: 300px;
+}
+
+.empty-section h3 {
+    margin-top: 50px;
+}
+
+.margin-space {
+    margin-bottom: 15px !IMPORTANT;
+}
+
+/*
+ *  overwrite bootstrap css for checkbox and label
+ */
+
+.label-aligment  label {
+    padding-left: 0;
+    font-weight: 700;
+}
+
+.checkbox-aligment {
+    margin-left: 5px !IMPORTANT;
+}
+
+
+.button-aligment {
+    margin-left: 15px !IMPORTANT;
+}
+
+#recordings-wrap {
+    margin-left: -10px;
+}
+
+.top-layer {
+    z-index: 99999;
+}
+
+.progress-bar-aligment {
+    padding: 0;
+    margin: 15px;
+}
+
+.custom-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.overlay {
+    opacity: 0.3;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    z-index: 100000000;
+    height: 100%;
+    width: 100%;
+    top: 0;
+}
+
+.overlay-relative {
+    position: relative;
+}
+
+.red-text {
+    color: #e25a5a;
+    margin-left: 105px;
+}
+
+.loading {
+    background: #fff url('../assets/img/ajax_loader_gray_26.gif') no-repeat right 15px bottom 3px;
+}
